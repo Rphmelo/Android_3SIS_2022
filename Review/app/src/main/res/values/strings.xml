@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Review</string>
+    <string name="register_character_screen_title">Cadastrar Personagem</string>
+    <string name="character_name_label">Nome</string>
+    <string name="character_description_label">Descrição</string>
+    <string name="register_character_button_label">Cadastrar</string>
+    <string name="go_to_list_character_button_label">Lista de Personagens</string>
+</resources>
