@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.rphmelo.countries.database.AppDatabase
 import com.rphmelo.countries.databinding.FragmentCountriesBinding
 
 class CountriesFragment : Fragment() {
@@ -13,6 +14,11 @@ class CountriesFragment : Fragment() {
     private var binding: FragmentCountriesBinding? = null
     private val countryAdapter by lazy {
         CountryItemAdapter()
+    }
+    private val appDb by lazy {
+        view?.context?.let {
+            AppDatabase.getDatabase(it)
+        }
     }
 
     override fun onCreateView(
@@ -40,6 +46,10 @@ class CountriesFragment : Fragment() {
         }
         binding?.buttonAddCountry?.setOnClickListener { view ->
             findNavController().navigate(R.id.action_to_RegisterCountryFragment)
+        }
+
+        appDb?.countryInfoDao()?.getAll()?.let {
+            countryAdapter.setData(it)
         }
     }
 }
