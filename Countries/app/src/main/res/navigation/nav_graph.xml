@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/RegisterCountryFragment"
         android:name="com.rphmelo.countries.RegisterCountryFragment"
-        android:label="@string/register_country_fragment_label"
+        android:label="@string/register_update_country_fragment_label"
         tools:layout="@layout/fragment_register_country"/>
     <fragment
         android:id="@+id/CountriesFragment"

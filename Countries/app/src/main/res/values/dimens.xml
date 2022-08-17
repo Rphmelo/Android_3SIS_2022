@@ -15,5 +15,7 @@
     <dimen name="font_size_xl">48sp</dimen>
     <dimen name="font_size_xxl">56sp</dimen>
     <dimen name="font_size_xxxl">64sp</dimen>
-    
+
+    <dimen name="icon_size">32dp</dimen>
+
 </resources>

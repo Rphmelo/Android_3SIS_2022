@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rphmelo.countries.database.CountryInfo
 import com.rphmelo.countries.databinding.ViewCountryItemBinding
 
-class CountryItemAdapter : RecyclerView.Adapter<CountryItemAdapter.CharacterItemViewHolder>() {
+class CountryItemAdapter(
+    private val onDeleteListener: (CountryInfo) -> Unit = {},
+    private val onUpdateListener: (CountryInfo) -> Unit = {},
+) : RecyclerView.Adapter<CountryItemAdapter.CharacterItemViewHolder>() {
 
     private var countryList: MutableList<CountryInfo> = mutableListOf()
 
@@ -16,7 +19,7 @@ class CountryItemAdapter : RecyclerView.Adapter<CountryItemAdapter.CharacterItem
     }
 
     override fun onBindViewHolder(holder: CharacterItemViewHolder, position: Int) {
-        holder.bindView(countryList[position])
+        holder.bindView(countryList[position], position)
     }
 
     override fun getItemCount(): Int {
@@ -35,12 +38,20 @@ class CountryItemAdapter : RecyclerView.Adapter<CountryItemAdapter.CharacterItem
         private val view: ViewCountryItemBinding
     ) : RecyclerView.ViewHolder(view.root) {
 
-        fun bindView(countryInfo: CountryInfo) {
+        fun bindView(countryInfo: CountryInfo, itemPosition: Int) {
             view.countryNameValue.text = countryInfo.name
             view.countryCapitalValue.text = countryInfo.capital
             view.countryLanguageValue.text = countryInfo.language
             view.countryLocationValue.text = countryInfo.location
             view.countryCurrencyValue.text = countryInfo.currency
+
+            view.iconDelete.setOnClickListener {
+                onDeleteListener.invoke(countryInfo)
+            }
+
+            view.iconUpdate.setOnClickListener {
+                onUpdateListener.invoke(countryInfo)
+            }
         }
     }
 }

@@ -106,7 +106,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/registerCountryButton"
+        android:id="@+id/registerUpdateCountryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register_country_button_label"
