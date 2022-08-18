@@ -15,4 +15,7 @@
     <string name="country_currency_label">Moeda</string>
     <string name="country_location_label">Localização</string>
     <string name="register_country_button_label">Cadastrar</string>
+    <string name="delete_dialog_title">Deletar País</string>
+    <string name="delete_dialog_message">Tem certeza que deseja deletar o país %s ?</string>
+    <string name="delete_cancel_label">Cancelar</string>
 </resources>

@@ -138,6 +138,30 @@
             app:layout_constraintBottom_toBottomOf="@+id/countryLocationLabel"
             style="@style/TextAppearance.AppCompat.Caption"
             />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconUpdate"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:srcCompat="@drawable/ic_edit"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:padding="@dimen/spacing_xs"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:srcCompat="@drawable/ic_delete"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:padding="@dimen/spacing_xs"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

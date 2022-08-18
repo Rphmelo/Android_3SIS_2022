@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.rphmelo.countries.database.AppDatabase
+import com.rphmelo.countries.database.CountryInfo
 import com.rphmelo.countries.databinding.FragmentCountriesBinding
 
 class CountriesFragment : Fragment() {
 
     private var binding: FragmentCountriesBinding? = null
     private val countryAdapter by lazy {
-        CountryItemAdapter()
+        CountryItemAdapter(
+            onDeleteListener = ::onOpenConfirmationDialog,
+            onUpdateListener = ::updateCountry
+        )
     }
     private val appDb by lazy {
         view?.context?.let {
@@ -48,8 +53,28 @@ class CountriesFragment : Fragment() {
             findNavController().navigate(R.id.action_to_RegisterCountryFragment)
         }
 
+        getDataFromDatabase()
+    }
+
+    private fun getDataFromDatabase() {
         appDb?.countryInfoDao()?.getAll()?.let {
             countryAdapter.setData(it)
         }
     }
+
+    private fun updateCountry(countryInfo: CountryInfo) {
+
+    }
+
+    private fun onOpenConfirmationDialog(countryInfo: CountryInfo) {
+        context?.let {
+            MaterialAlertDialogBuilder(it)
+                .setTitle(getString(R.string.delete_dialog_title))
+                .setMessage(getString(R.string.delete_dialog_message, countryInfo.name))
+                .setNeutralButton(getString(R.string.delete_cancel_label)) { dialog, _ ->
+                    dialog.cancel()
+                }
+        }
+    }
+
 }
