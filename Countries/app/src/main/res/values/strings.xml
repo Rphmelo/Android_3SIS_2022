@@ -18,4 +18,6 @@
     <string name="delete_dialog_title">Deletar País</string>
     <string name="delete_dialog_message">Tem certeza que deseja deletar o país %s ?</string>
     <string name="delete_cancel_label">Cancelar</string>
+    <string name="delete_continue_label">Deletar</string>
+    <string name="success_deleted_message">País %s deletado com sucesso!</string>
 </resources>

@@ -63,7 +63,21 @@ class CountriesFragment : Fragment() {
     }
 
     private fun updateCountry(countryInfo: CountryInfo) {
+        findNavController().navigate(
+            R.id.action_to_RegisterCountryFragment,
+            RegisterCountryFragment.buildBundle(countryInfo)
+        )
+    }
 
+    private fun deleteCountry(countryInfo: CountryInfo) {
+        appDb?.countryInfoDao()?.delete(countryInfo)
+        binding?.recyclerViewCountries?.let {
+            SnackBarUtil.showSnackBar(
+                view = it,
+                message = getString(R.string.success_deleted_message, countryInfo.name)
+            )
+        }
+        getDataFromDatabase()
     }
 
     private fun onOpenConfirmationDialog(countryInfo: CountryInfo) {
@@ -73,6 +87,10 @@ class CountriesFragment : Fragment() {
                 .setMessage(getString(R.string.delete_dialog_message, countryInfo.name))
                 .setNeutralButton(getString(R.string.delete_cancel_label)) { dialog, _ ->
                     dialog.cancel()
+                }
+                .setPositiveButton(getString(R.string.delete_continue_label)) { dialog, _ ->
+                    deleteCountry(countryInfo)
+                    dialog.dismiss()
                 }
         }
     }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.rphmelo.countries.database.AppDatabase
 import com.rphmelo.countries.database.CountryInfo
@@ -17,6 +18,10 @@ class RegisterCountryFragment : Fragment() {
         view?.context?.let {
             AppDatabase.getDatabase(it)
         }
+    }
+
+    private val countryInfoArgument by lazy {
+        arguments?.getParcelable(COUNTRY_INFO_BUNDLE_KEY) as? CountryInfo
     }
 
     override fun onCreateView(
@@ -69,5 +74,15 @@ class RegisterCountryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    companion object {
+        const val COUNTRY_INFO_BUNDLE_KEY = "COUNTRY_INFO_BUNDLE_KEY"
+
+        fun buildBundle(countryInfo: CountryInfo?): Bundle? {
+            return countryInfo?.let {
+                bundleOf(COUNTRY_INFO_BUNDLE_KEY to it)
+            }
+        }
     }
 }
