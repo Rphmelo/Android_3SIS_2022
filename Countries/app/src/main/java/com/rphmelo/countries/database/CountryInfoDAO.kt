@@ -9,14 +9,14 @@ import androidx.room.Delete
 @Dao
 interface CountryInfoDAO {
     @Query("SELECT * FROM $COUNTRY_INFO_TABLE_NAME ORDER BY name ASC")
-    fun getAll(): List<CountryInfo>
+    suspend fun getAll(): List<CountryInfo>
 
     @Insert
-    fun insert(vararg countryInfo: CountryInfo)
+    suspend fun insert(vararg countryInfo: CountryInfo)
 
     @Update
-    fun update(countryInfo: CountryInfo)
+    suspend fun update(countryInfo: CountryInfo)
 
     @Delete
-    fun delete(countryInfo: CountryInfo)
+    suspend fun delete(countryInfo: CountryInfo)
 }

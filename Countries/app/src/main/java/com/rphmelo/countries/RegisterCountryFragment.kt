@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.rphmelo.countries.database.AppDatabase
 import com.rphmelo.countries.database.CountryInfo
 import com.rphmelo.countries.databinding.FragmentRegisterCountryBinding
+import kotlinx.coroutines.launch
 
 class RegisterCountryFragment : Fragment() {
 
@@ -20,7 +22,6 @@ class RegisterCountryFragment : Fragment() {
             AppDatabase.getDatabase(it)
         }
     }
-
     private val countryInfoArgument by lazy {
         arguments?.getParcelable(COUNTRY_INFO_BUNDLE_KEY) as? CountryInfo
     }
@@ -87,10 +88,14 @@ class RegisterCountryFragment : Fragment() {
 
             appDb?.countryInfoDao()?.run {
                 val snackBarMessageResId: Int = if(countryInfoArgument == null) {
-                    insert(countryInfo)
+                    lifecycleScope.launch {
+                        insert(countryInfo)
+                    }
                     R.string.register_country_success_registered_message
                 } else {
-                    update(countryInfo)
+                    lifecycleScope.launch {
+                        update(countryInfo)
+                    }
                     R.string.register_country_success_updated_message
                 }
                 clearForm()

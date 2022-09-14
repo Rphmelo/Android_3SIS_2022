@@ -29,7 +29,6 @@ abstract class AppDatabase: RoomDatabase(){
                     context,
                     AppDatabase::class.java,
                     COUNTRY_DATABASE_NAME)
-                    .allowMainThreadQueries() //Possibilita execução de operações de banco de dados na MainThread, não deve ser executado em produção
                     .fallbackToDestructiveMigration()//Habilita destruição do banco e criação de um novo a cada upgrade do modelo
                     .build()
                 INSTANCE = instance

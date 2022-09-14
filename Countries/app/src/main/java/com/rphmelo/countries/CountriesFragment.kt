@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.rphmelo.countries.database.AppDatabase
 import com.rphmelo.countries.database.CountryInfo
 import com.rphmelo.countries.databinding.FragmentCountriesBinding
+import kotlinx.coroutines.launch
 
 class CountriesFragment : Fragment() {
 
@@ -61,7 +63,9 @@ class CountriesFragment : Fragment() {
     }
 
     private fun deleteCountry(countryInfo: CountryInfo) {
-        appDb?.countryInfoDao()?.delete(countryInfo)
+        lifecycleScope.launch {
+            appDb?.countryInfoDao()?.delete(countryInfo)
+        }
         binding?.recyclerViewCountries?.let {
             SnackBarUtil.showSnackBar(it, getString(R.string.register_country_success_deleted_message, countryInfo.name))
         }
@@ -73,8 +77,10 @@ class CountriesFragment : Fragment() {
     }
 
     private fun getDataFromDatabase() {
-        appDb?.countryInfoDao()?.getAll()?.let {
-            countryAdapter.setData(it)
+        lifecycleScope.launch {
+            appDb?.countryInfoDao()?.getAll()?.let {
+                countryAdapter.setData(it)
+            }
         }
     }
 
