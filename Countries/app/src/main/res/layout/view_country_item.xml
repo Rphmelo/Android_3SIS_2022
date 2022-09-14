@@ -33,7 +33,7 @@
             tools:text="Description"
             android:layout_marginStart="@dimen/spacing_sm"
             app:layout_constraintStart_toEndOf="@+id/countryNameLabel"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconUpdate"
             app:layout_constraintTop_toTopOf="@+id/countryNameLabel"
             app:layout_constraintBottom_toBottomOf="@+id/countryNameLabel"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -58,7 +58,7 @@
             tools:text="Description"
             android:layout_marginStart="@dimen/spacing_sm"
             app:layout_constraintStart_toEndOf="@+id/countryCapitalLabel"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconUpdate"
             app:layout_constraintTop_toTopOf="@+id/countryCapitalLabel"
             app:layout_constraintBottom_toBottomOf="@+id/countryCapitalLabel"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -83,7 +83,7 @@
             tools:text="Description"
             android:layout_marginStart="@dimen/spacing_sm"
             app:layout_constraintStart_toEndOf="@+id/countryCurrencyLabel"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconUpdate"
             app:layout_constraintTop_toTopOf="@+id/countryCurrencyLabel"
             app:layout_constraintBottom_toBottomOf="@+id/countryCurrencyLabel"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -108,7 +108,7 @@
             tools:text="Description"
             android:layout_marginStart="@dimen/spacing_sm"
             app:layout_constraintStart_toEndOf="@+id/countryLanguageLabel"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconDelete"
             app:layout_constraintTop_toTopOf="@+id/countryLanguageLabel"
             app:layout_constraintBottom_toBottomOf="@+id/countryLanguageLabel"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -133,7 +133,7 @@
             tools:text="Description"
             android:layout_marginStart="@dimen/spacing_sm"
             app:layout_constraintStart_toEndOf="@+id/countryLocationLabel"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconDelete"
             app:layout_constraintTop_toTopOf="@+id/countryLocationLabel"
             app:layout_constraintBottom_toBottomOf="@+id/countryLocationLabel"
             style="@style/TextAppearance.AppCompat.Caption"
@@ -141,27 +141,25 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iconUpdate"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             app:srcCompat="@drawable/ic_edit"
-            android:layout_marginEnd="@dimen/spacing_xs"
-            android:padding="@dimen/spacing_xs"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/spacing_xs"
+            android:layout_marginEnd="@dimen/spacing_xs"
             />
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iconDelete"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             app:srcCompat="@drawable/ic_delete"
-            android:layout_marginEnd="@dimen/spacing_xs"
-            android:padding="@dimen/spacing_xs"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/spacing_xs"
+            android:layout_marginEnd="@dimen/spacing_xs"
             />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

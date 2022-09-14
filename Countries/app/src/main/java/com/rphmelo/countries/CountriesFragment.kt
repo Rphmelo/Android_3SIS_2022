@@ -16,7 +16,7 @@ class CountriesFragment : Fragment() {
     private var binding: FragmentCountriesBinding? = null
     private val countryAdapter by lazy {
         CountryItemAdapter(
-            onDeleteListener = ::onOpenConfirmationDialog,
+            onDeleteListener = ::openConfirmationDeleteDialog,
             onUpdateListener = ::updateCountry
         )
     }
@@ -50,10 +50,26 @@ class CountriesFragment : Fragment() {
             adapter = countryAdapter
         }
         binding?.buttonAddCountry?.setOnClickListener { view ->
-            findNavController().navigate(R.id.action_to_RegisterCountryFragment)
+            goToRegisterCountry()
         }
 
         getDataFromDatabase()
+    }
+
+    private fun goToRegisterCountry(countryInfo: CountryInfo? = null) {
+        findNavController().navigate(R.id.action_to_RegisterCountryFragment, RegisterCountryFragment.buildBundle(countryInfo))
+    }
+
+    private fun deleteCountry(countryInfo: CountryInfo) {
+        appDb?.countryInfoDao()?.delete(countryInfo)
+        binding?.recyclerViewCountries?.let {
+            SnackBarUtil.showSnackBar(it, getString(R.string.register_country_success_deleted_message, countryInfo.name))
+        }
+        getDataFromDatabase()
+    }
+
+    private fun updateCountry(countryInfo: CountryInfo) {
+        goToRegisterCountry(countryInfo)
     }
 
     private fun getDataFromDatabase() {
@@ -62,37 +78,19 @@ class CountriesFragment : Fragment() {
         }
     }
 
-    private fun updateCountry(countryInfo: CountryInfo) {
-        findNavController().navigate(
-            R.id.action_to_RegisterCountryFragment,
-            RegisterCountryFragment.buildBundle(countryInfo)
-        )
-    }
-
-    private fun deleteCountry(countryInfo: CountryInfo) {
-        appDb?.countryInfoDao()?.delete(countryInfo)
-        binding?.recyclerViewCountries?.let {
-            SnackBarUtil.showSnackBar(
-                view = it,
-                message = getString(R.string.success_deleted_message, countryInfo.name)
-            )
-        }
-        getDataFromDatabase()
-    }
-
-    private fun onOpenConfirmationDialog(countryInfo: CountryInfo) {
+    private fun openConfirmationDeleteDialog(countryInfo: CountryInfo) {
         context?.let {
             MaterialAlertDialogBuilder(it)
-                .setTitle(getString(R.string.delete_dialog_title))
-                .setMessage(getString(R.string.delete_dialog_message, countryInfo.name))
-                .setNeutralButton(getString(R.string.delete_cancel_label)) { dialog, _ ->
+                .setTitle(resources.getString(R.string.delete_dialog_title))
+                .setMessage(resources.getString(R.string.delete_dialog_message, countryInfo.name))
+                .setNeutralButton(resources.getString(R.string.delete_cancel_label)) { dialog, _ ->
                     dialog.cancel()
                 }
-                .setPositiveButton(getString(R.string.delete_continue_label)) { dialog, _ ->
+                .setPositiveButton(resources.getString(R.string.delete_continue_label)) { dialog, _ ->
                     deleteCountry(countryInfo)
                     dialog.dismiss()
                 }
+                .show()
         }
     }
-
 }

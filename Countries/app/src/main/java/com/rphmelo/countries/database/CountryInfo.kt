@@ -5,11 +5,12 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 const val COUNTRY_INFO_TABLE_NAME = "country"
-@Entity(tableName = COUNTRY_INFO_TABLE_NAME)
+
 @Parcelize
+@Entity(tableName = COUNTRY_INFO_TABLE_NAME)
 data class CountryInfo(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @NonNull @ColumnInfo val name: String,
