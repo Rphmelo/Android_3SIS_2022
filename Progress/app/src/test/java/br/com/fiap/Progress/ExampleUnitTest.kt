@@ -1,4 +1,4 @@
-package br.com.fiap.Progress
+package br.com.fiap.progress
 
 import org.junit.Test
 

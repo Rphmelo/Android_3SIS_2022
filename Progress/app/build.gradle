@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "br.com.fiap.Progress"
+        applicationId "br.com.fiap.progress"
         minSdk 26
         targetSdk 32
         versionCode 1
