@@ -2,7 +2,7 @@ package br.com.fiap.progress
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.fiap.Progress.databinding.ActivityMainBinding
+import br.com.fiap.progress.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

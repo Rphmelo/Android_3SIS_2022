@@ -2,5 +2,7 @@
     <string name="app_name">Progress</string>
     <string name="progress_button_label">Progress</string>
     <string name="stop_button_label">Parar</string>
+    <string name="start_fibonacci_button_label">Iniciar Fibonacci</string>
     <string name="show_toast_label">Mostrar Toast</string>
+    <string name="fibonacci_button_label">Fibonacci</string>
 </resources>
