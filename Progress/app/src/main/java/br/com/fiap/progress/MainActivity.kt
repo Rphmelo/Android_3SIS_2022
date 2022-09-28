@@ -16,5 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding.buttonGoToProgress.setOnClickListener {
             startActivity(ProgressActivity.buildIntent(this))
         }
+
+        binding.buttonGoToFibonacci.setOnClickListener {
+            startActivity(FibonacciActivity.buildIntent(this))
+        }
     }
 }

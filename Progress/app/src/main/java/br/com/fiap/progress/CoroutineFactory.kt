@@ -30,4 +30,15 @@ object CoroutineFactory {
         }.await()
     }
 
+    suspend fun calculateFibonacciSuspend(x: Int): Int {
+        return withContext(Dispatchers.Main) {
+            this.async {
+                calculateFibonacci(x)
+            }
+        }.await()
+    }
+
+    private fun calculateFibonacci(x: Int): Int =
+        if (x <= 1) x else calculateFibonacci(x - 1) + calculateFibonacci(x - 2)
+
 }

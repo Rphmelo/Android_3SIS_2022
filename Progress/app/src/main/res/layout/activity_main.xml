@@ -17,6 +17,17 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_go_to_fibonacci"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:text="@string/fibonacci_button_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_go_to_progress"
+        android:layout_marginTop="@dimen/spacing_md"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

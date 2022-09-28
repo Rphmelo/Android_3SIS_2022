@@ -3,4 +3,7 @@
     <string name="progress_button_label">Progress</string>
     <string name="start_button_label">Iniciar</string>
     <string name="stop_button_label">Parar</string>
+    <string name="fibonacci_button_label">Fibonacci</string>
+    <string name="increment_fibonacci_button_label">Incrementar Fibonacci</string>
+    <string name="stop_fibonacci_button_label">Parar Fibonacci</string>
 </resources>
