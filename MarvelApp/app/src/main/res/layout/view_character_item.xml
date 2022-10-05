@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="@dimen/spacing_sm"
+    app:cardCornerRadius="@dimen/spacing_sm"
+    android:layout_marginTop="@dimen/spacing_sm"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_sm"
+        >
+
+        <TextView
+            android:id="@+id/characterNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/character_name_label"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/TextAppearance.AppCompat.Body2"
+            />
+
+        <TextView
+            android:id="@+id/characterNameValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:layout_marginStart="@dimen/spacing_sm"
+            app:layout_constraintStart_toEndOf="@+id/characterNameLabel"
+            app:layout_constraintTop_toTopOf="@id/characterNameLabel"
+            app:layout_constraintBottom_toBottomOf="@id/characterNameLabel"
+            style="@style/TextAppearance.AppCompat.Caption"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
