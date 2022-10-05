@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+
     compileSdk 32
 
     defaultConfig {
@@ -17,9 +18,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    def apikeyPropertiesFile = rootProject.file("keys.properties")
+    def apikeyProperties = new Properties()
+    apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField("String", "MARVEL_API_KEY", apikeyProperties['MARVEL_API_KEY'])
+            buildConfigField("String", "MARVEL_PRIVATE_KEY", apikeyProperties['MARVEL_PRIVATE_KEY'])
+        }
         release {
             minifyEnabled false
+            buildConfigField("String", "MARVEL_API_KEY", apikeyProperties['MARVEL_API_KEY'])
+            buildConfigField("String", "MARVEL_PRIVATE_KEY", apikeyProperties['MARVEL_PRIVATE_KEY'])
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -36,16 +48,10 @@ android {
 }
 
 dependencies {
-
-    def moshi_version = '1.8.0'
     def retrofit_version = '2.9.0'
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.squareup.moshi:moshi:$moshi_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
-
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
