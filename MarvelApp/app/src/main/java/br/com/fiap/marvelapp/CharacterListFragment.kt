@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.fiap.marvelapp.databinding.FragmentCharacterListBinding
 
-class CharacterListFragment : Fragment() {
+class
+CharacterListFragment : Fragment() {
 
     private lateinit var binding: FragmentCharacterListBinding
 
