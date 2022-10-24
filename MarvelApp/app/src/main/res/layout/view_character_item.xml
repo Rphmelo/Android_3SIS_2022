@@ -15,15 +15,14 @@
         android:layout_marginVertical="@dimen/spacing_sm"
         >
 
-        <TextView
-            android:id="@+id/characterNameLabel"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/character_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/character_name_label"
-            android:layout_marginStart="@dimen/spacing_xs"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            style="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background"
             />
 
         <TextView
