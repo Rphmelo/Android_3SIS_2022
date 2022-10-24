@@ -4,7 +4,9 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import br.com.fiap.marvelapp.CharacterDetailFragment.Companion.buildBundle
 import br.com.fiap.marvelapp.data.MarvelCharacterDataResultModel
 import br.com.fiap.marvelapp.databinding.ViewCharacterItemBinding
 import com.squareup.picasso.Picasso
@@ -44,6 +46,14 @@ class CharacterListAdapter : RecyclerView.Adapter<CharacterListAdapter.Character
     ) : RecyclerView.ViewHolder(view.root) {
 
         fun bindView(character: MarvelCharacterDataResultModel) {
+            with(view.root) {
+                setOnClickListener {
+                    findNavController().navigate(
+                        R.id.action_character_list_to_character_detail,
+                        buildBundle(character)
+                    )
+                }
+            }
             view.characterNameValue.text = character.name
 
             character.getThumbnailFullUrl()?.let {

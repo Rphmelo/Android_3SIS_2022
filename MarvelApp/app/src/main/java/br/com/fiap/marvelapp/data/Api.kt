@@ -32,4 +32,14 @@ object Api {
                 hash
             )
         }
+
+    suspend fun listComics(characterId: Int): Response<MarvelComicModel> =
+        withContext(Dispatchers.IO) {
+            marvelService.listComics(
+                characterId,
+                timestamp,
+                BuildConfig.MARVEL_API_KEY,
+                hash
+            )
+        }
 }
