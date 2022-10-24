@@ -17,13 +17,12 @@ object Api {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private val marvelService: MarvelService by lazy {
-        retrofit.create(MarvelService::class.java)
-    }
+    private val marvelService: MarvelService = retrofit.create(
+        MarvelService::class.java
+    )
 
     private val timestamp = Date().time.toString()
     private val hash = Utils.md5(timestamp + BuildConfig.MARVEL_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY)
-
 
     suspend fun listCharacters(): Response<MarvelCharacterModel> =
         withContext(Dispatchers.IO) {

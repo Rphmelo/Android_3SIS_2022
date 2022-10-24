@@ -33,10 +33,8 @@ class CharacterListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        with(binding.recyclerViewCharacters) {
-            setHasFixedSize(true)
-            adapter = characterListAdapter
-        }
+        binding.recyclerViewCharacters.setHasFixedSize(true)
+        binding.recyclerViewCharacters.adapter = characterListAdapter
     }
 
     private fun makeWebServiceCall() {
@@ -49,9 +47,9 @@ class CharacterListFragment : Fragment() {
             } else {
                 Snackbar.make(
                     binding.recyclerViewCharacters,
-                    "Ocorreu um erro.",
+                    "Ocorreu um erro",
                     Snackbar.LENGTH_SHORT
-                ).show()
+                )
             }
         }
     }
