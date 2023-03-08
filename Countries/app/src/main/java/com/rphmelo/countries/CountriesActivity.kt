@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.rphmelo.countries.database.AppDatabase
 import com.rphmelo.countries.databinding.ActivityCountriesBinding
 
 class CountriesActivity : AppCompatActivity() {
