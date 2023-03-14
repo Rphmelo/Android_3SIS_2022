@@ -11,7 +11,8 @@ interface MarvelService {
     suspend fun listCharacters(
         @Query("ts") ts: String,
         @Query("apikey") apikey: String,
-        @Query("hash") hash: String
+        @Query("hash") hash: String,
+        @Query("offset") orderBy: Int = 140
     ): Response<MarvelCharacterModel>
 
     @GET("/v1/public/characters/{characterId}/comics")

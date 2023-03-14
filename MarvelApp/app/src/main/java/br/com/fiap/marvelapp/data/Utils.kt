@@ -5,11 +5,9 @@ import java.security.MessageDigest
 
 object Utils {
 
-    fun md5(input: String) = hashString("MD5", input)
-
-    private fun hashString(type: String, input: String): String {
+    fun md5(input: String): String {
         val bytes = MessageDigest
-            .getInstance(type)
+            .getInstance("MD5")
         return BigInteger(1, bytes.digest(input.toByteArray())).toString(16)
     }
 }
